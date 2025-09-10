@@ -1,0 +1,92 @@
+/* Base */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  color: #0f172a;          /* texto principal */
+  background: #f7faf9;     /* fundo suave */
+  line-height: 1.6;
+}
+
+/* Utilidades */
+.container { width: min(1120px, 92vw); margin: 0 auto; }
+#produtos { padding: 56px 0 64px; }
+
+/* Título e subtítulo */
+.section-title {
+  text-align: center;
+  margin: 24px 0 8px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+.section-sub {
+  text-align: center;
+  color: #6b7280;         /* texto secundário */
+  margin: 0 auto 28px;
+  max-width: 760px;
+}
+
+/* Grid de cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover,
+.card:focus-within {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.12);
+  border-color: #1b8f60; /* realce sutil */
+}
+
+/* Conteúdo do card */
+.card h3 {
+  margin: .4rem 0 .6rem;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+.card p {
+  color: #6b7280;
+  margin: 0 0 .8rem;
+}
+.card ul {
+  margin: .6rem 0 0;
+  padding-left: 1.1rem;
+  color: #0f172a;
+}
+.card ul li { margin: .2rem 0; }
+
+/* Chip (selo) no rodapé do card) */
+.chip {
+  margin-top: auto;
+  display: inline-block;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 980px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .cards { grid-template-columns: 1fr; }
+  #produtos { padding: 40px 0 48px; }
+}

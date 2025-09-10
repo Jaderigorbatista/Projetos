@@ -1,0 +1,584 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+    color: #0f172a;
+    /* secondary */
+    background: #f7faf9;
+    /* bg */
+    line-height: 1.6;
+}
+
+/* Utilidades */
+.container {
+    width: min(1120px, 92vw);
+    margin: 0 auto;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .9rem 1.2rem;
+    border-radius: 999px;
+    border: 0;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #1b8f60;
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+}
+
+.btn-primary:hover {
+    background: #146b47;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #1b8f60;
+    border: 2px solid #1b8f60;
+}
+
+.tag {
+    display: inline-block;
+    padding: .35rem .75rem;
+    color: #146b47;
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+
+/* Header */
+header {
+    position: relative;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: saturate(180%) blur(6px);
+    background: rgba(247, 250, 249, .7);
+    border-bottom: 1px solid rgba(0, 0, 0, .04);
+}
+
+/* >>> Alinhamento horizontal harmônico do header (div.container.nav) */
+.container.nav {
+    display: flex;
+    align-items: center;
+    /* centraliza verticalmente */
+    justify-content: space-between;
+    /* logo à esquerda, menu/cta à direita */
+    gap: clamp(8px, 2vw, 24px);
+    /* espaço fluido entre blocos */
+    flex-wrap: nowrap;
+    /* impede quebra de linha */
+    min-height: 64px;
+}
+
+/* Logo não quebra e mantém tamanho enxuto */
+.container.nav .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    white-space: nowrap;
+    /* não quebra o nome */
+    flex: 0 0 auto;
+    text-decoration: none;
+    color: #0f172a;
+    /* secondary */
+    font-weight: 800;
+    letter-spacing: .2px;
+    font-size: 1.15rem;
+}
+
+.logo-mark {
+    width: 50px;
+    height: 50px;
+    border-radius: 10Ppx;
+    background: linear-gradient(135deg, #1b8f60, #23b77c);
+    display: grid;
+    place-items: center;
+    color: white;
+    font-weight: 800;
+}
+
+/* Wrapper do nav cresce e empurra itens para a direita */
+.container.nav>nav {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Itens do menu em linha, centralizados e sem quebra */
+.container.nav nav ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(.6rem, 1.6vw, 1.2rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: nowrap;
+    /* tudo em uma linha */
+    white-space: nowrap;
+    /* evita quebra interna */
+}
+
+.container.nav nav li {
+    display: inline-flex;
+}
+
+.container.nav nav a {
+    text-decoration: none;
+    color: #0f172a;
+    /* secondary */
+    font-weight: 600;
+    line-height: 1;
+    /* ajuda a alinhar com o botão */
+    min-width: fit-content;
+}
+
+.container.nav nav a:hover {
+    color: #1b8f60;
+}
+
+/* primary */
+
+/* Botão de CTA no header com dimensões consistentes */
+.container.nav .btn {
+    padding: .7rem 1rem;
+    /* um pouco mais compacto */
+}
+
+/* Comportamento amigável em telas pequenas: mantém em uma linha com scroll suave */
+@media (max-width: 720px) {
+    .container.nav {
+        gap: 12px;
+    }
+
+    .container.nav nav ul {
+        overflow-x: auto;
+        /* rolagem horizontal se faltar espaço */
+        overscroll-behavior-inline: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        /* Firefox */
+    }
+
+    .container.nav nav a {
+        font-size: .95rem;
+    }
+
+    .container.nav .btn {
+        padding: .6rem .9rem;
+        font-size: .95rem;
+    }
+}
+
+/* Seções principais */
+.nav {
+    /* (mantido para compatibilidade geral de estilos) */
+    /* a configuração principal do header está em .container.nav acima */
+}
+
+nav ul {
+    /* estilo base (será sobrescrito por .container.nav nav ul quando no header) */
+    display: flex;
+    gap: 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    padding: 80px 0 64px;
+    background: radial-gradient(1000px 500px at 20% -10%, #dff5ea 0%, rgba(223, 245, 234, 0) 70%), radial-gradient(800px 500px at 100% 0%, #eafbf2 0%, rgba(234, 251, 242, 0) 70%);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.badge {
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    line-height: 1.12;
+    margin: .4rem 0 1rem;
+}
+
+.hero p.lead {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin: 0 0 1.4rem;
+}
+
+/* muted */
+.hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+}
+
+.hero-card {
+    background: #ffffff;
+    /* card */
+    border: 1px solid #e5e7eb;
+    /* border */
+    border-radius: 16px;
+    /* radius */
+    padding: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    /* shadow */
+}
+
+.hero-card h3 {
+    margin: .2rem 0 1rem;
+}
+
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.kpi {
+    background: #f8fffb;
+    border: 1px dashed #d1fae5;
+    border-radius: 12px;
+    padding: .9rem;
+    text-align: center;
+}
+
+.kpi strong {
+    font-size: 1.15rem;
+    display: block;
+}
+
+/* Produtos */
+section {
+    padding: 72px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.section-sub {
+    text-align: center;
+    color: #6b7280;
+    margin: 0 auto 28px;
+    max-width: 760px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: #ffffff;
+    /* card */
+    border: 1px solid #e5e7eb;
+    /* border */
+    border-radius: 16px;
+    /* radius */
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    /* shadow */
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    margin: .4rem 0 .6rem;
+}
+
+.card p {
+    color: #6b7280;
+    margin: 0 0 .8rem;
+}
+
+/* muted */
+.card ul {
+    margin: .6rem 0 0;
+    padding-left: 1.1rem;
+    color: #0f172a;
+}
+
+/* secondary */
+.card .chip {
+    display: inline-block;
+    margin-top: auto;
+    background: #f1f5f9;
+    color: #0f172a;
+    padding: .35rem .6rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+/* Planos */
+.plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.plan {
+    background: #ffffff;
+    /* card */
+    border: 1px solid #e5e7eb;
+    /* border */
+    border-radius: 16px;
+    /* radius */
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    /* shadow */
+    position: relative;
+}
+
+.plan.popular {
+    border-color: #1b8f60;
+    box-shadow: 0 14px 40px rgba(27, 143, 96, .18);
+}
+
+/* primary */
+.plan .ribbon {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: #f6c343;
+    color: #1f2937;
+    padding: .3rem .6rem;
+    font-weight: 800;
+    border-radius: 8px;
+    font-size: .78rem;
+}
+
+/* accent */
+.price {
+    font-weight: 800;
+    font-size: 1.8rem;
+    margin: .4rem 0;
+}
+
+.plan ul {
+    margin: .6rem 0 1rem;
+    padding-left: 1.1rem;
+}
+
+/* Depoimentos */
+.testimonials {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 320px;
+    gap: 18px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+}
+
+.testimonial {
+    scroll-snap-align: start;
+    background: #ffffff;
+    /* card */
+    border: 1px solid #e5e7eb;
+    /* border */
+    border-radius: 16px;
+    /* radius */
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    /* shadow */
+}
+
+.testimonial .author {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin-top: .8rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: #e2e8f0;
+    display: inline-block;
+}
+
+/* FAQ */
+.faq {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+details {
+    background: #ffffff;
+    /* card */
+    border: 1px solid #e5e7eb;
+    /* border */
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    /* shadow */
+}
+
+details[open] {
+    border-color: #1b8f60;
+}
+
+/* primary */
+summary {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+details p {
+    margin: .6rem 0 0;
+    color: #6b7280;
+}
+
+/* muted */
+
+/* CTA */
+.cta {
+    background: linear-gradient(135deg, #f7fdf9, #e9fbf1);
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* border */
+.cta .cta-box {
+    background: #ffffff;
+    /* card */
+    border: 1px solid #e5e7eb;
+    /* border */
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    /* shadow */
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 18px;
+    align-items: center;
+}
+
+form .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+label {
+    font-weight: 600;
+    font-size: .92rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: .7rem .85rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid rgba(27, 143, 96, .18);
+    border-color: #1b8f60;
+    /* primary */
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: .55rem;
+    font-size: .9rem;
+    color: #6b7280;
+}
+
+/* muted */
+
+/* Footer */
+footer {
+    padding: 48px 0 28px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr .8fr;
+    gap: 18px;
+}
+
+.footer-grid a {
+    color: #0f172a;
+    text-decoration: none;
+}
+
+/* secondary */
+.footer-grid a:hover {
+    color: #1b8f60;
+}
+
+/* primary */
+.copyright {
+    margin-top: 22px;
+    color: #6b7280;
+    font-size: .9rem;
+}
+
+/* muted */
+
+/* Responsivo geral das seções */
+@media (max-width: 980px) {
+
+    .hero-grid,
+    .cta .cta-box,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cards,
+    .plans,
+    .faq {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+
+    /* Mantemos o menu visível; sem esconder nav ul */
+    .cards,
+    .plans,
+    .faq,
+    .kpis,
+    form .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 64px;
+    }
+}
